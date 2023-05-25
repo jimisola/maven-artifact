@@ -4,9 +4,8 @@ from maven_artifact.artifact import Artifact
 
 
 class Utils:
-
     @staticmethod
-    def parse(maven_coordinate):
+    def create_artifact_from_mvn_coordinates(maven_coordinate):
         parts = maven_coordinate.split(":")
         if len(parts) >= 3:
             g = parts[0]
@@ -22,7 +21,7 @@ class Utils:
             return Artifact(group_id=g, artifact_id=a, version=v, classifier=c, extension=t)
         else:
             return None
-    
+
     @staticmethod
     def is_base64(sb):
         try:
@@ -36,4 +35,3 @@ class Utils:
             return base64.b64encode(base64.b64decode(sb_bytes)) == sb_bytes
         except Exception:
             return False
-

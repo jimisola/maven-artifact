@@ -1,11 +1,12 @@
 import os
 import tempfile
 
-from maven_artifact import Artifact, Downloader
+from maven_artifact import Downloader
+from maven_artifact.utils import Utils
 
 
 def test_downloader_of_existing_artifact():
-    artifact = Artifact.parse("org.apache.solr:solr:war:3.5.0")
+    artifact = Utils.create_artifact_from_mvn_coordinates("org.apache.solr:solr:war:3.5.0")
 
     dl = Downloader()
 
